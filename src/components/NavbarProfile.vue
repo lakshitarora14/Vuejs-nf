@@ -13,6 +13,7 @@
 
 <script>
   import OpenProfile from './OpenProfile'
+
   export default {
     name: "NavbarProfile",
     components:{

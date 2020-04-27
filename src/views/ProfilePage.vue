@@ -20,7 +20,6 @@
       ...mapState([
         'title'
       ])
-
     }
   }
 </script>
@@ -32,7 +31,7 @@
   .profilePage{
     background-color: black;
     &__heading{
-      margin-top: 120px;
+      margin-top: 80px;
       margin-bottom: 8px;
       color: white;
       font-family:"Helvetica Neue";

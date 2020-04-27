@@ -11,56 +11,83 @@
         <img src="../assets/netflix.png" class="nav__logo">
       </router-link>
     <div class="hoverWrapper">
-      <input class="nav__search" type="text" placeholder="Titles,people,genres" v-model="message">
+      <input class="nav__search" type="text" placeholder="Titles,people,genres"
+             v-model="message" @keyup.enter="fetchMovieDetails(message),isTrue=true">
       <div id="search-card">
-        Searching for {{message}}
+        <h3>Searching for {{message}}</h3>
+        <br>
+        <br>
+        <MovieDetails :movie-details="movieDetails" v-show="isTrue"></MovieDetails>
       </div>
     </div>
   </div>
 </template>
+
 <script>
-  import axios from "axios";
-  export default {
-    name: "NavbarMainPage",
-    data(){
-      return{
-        message:''
-      }
+import axios from "axios";
+import MovieDetails from './MovieDetails'
+
+export default {
+  name: "NavbarMainPage",
+  data(){
+    return{
+      message:'',
+      movieDetails: [],
+      isTrue:false
+    }
+  },
+  components:{
+    MovieDetails,
+  },
+  methods: {
+    myMethod () {
+      // todo
     },
+    fetchMovieDetails (movie) {
+      let url = buildUrl(movie)
+      axios.get(url)
+        .then(response => {
+          this.updateMovieDetailsInStore(response.data)
+        })
+
+    },
+    updateMovieDetailsInStore (data){
+      this.movieDetails = data
+    }
+  },
+  mounted () {
+    this.fetchMovieDetails()
 
   }
-  const BaseUrl = "http://www.omdbapi.com/?t=";
-  const ApiKey = "&apikey=dba80b24";
+}
 
-  function buildUrl (searchText) {
-    return BaseUrl + searchText + ApiKey
-  }
-  let url = buildUrl('Avengers')
-  axios.get(url)
-    .then(response => {
-      console.log(response.data)
-    })
+const BaseUrl = "http://www.omdbapi.com/?t=";
+const ApiKey = "&apikey=dba80b24";
 
-
+function buildUrl (searchText) {
+  return BaseUrl + searchText + ApiKey
+}
 </script>
 
 <style scoped lang="scss">
-  .hoverWrapper:hover #search-card {
-    display: block;
-  }
 
-  .hoverWrapper #search-card {
-    display: none;
-    font-family: "Helvetica Neue";
-    font-size: 25px;
-    color: white;
-    width: 500px;
-    height: 600px;
-    margin: 0 auto;
-    padding-top:100px ;
-  }
+.hoverWrapper:hover #search-card {
+  display: block;
+}
+
+.hoverWrapper #search-card {
+  display: none;
+  font-family: "Helvetica Neue";
+  font-size: 25px;
+  color: white;
+  /*width: */
+  height: 600px;
+  margin: 0 auto;
+  padding:100px;
+}
   .nav {
     height: 80px;
+    font-family: "Helvetica Neue";
 
     &__logo {
       float: left;
