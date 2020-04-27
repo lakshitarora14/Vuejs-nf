@@ -28,6 +28,11 @@ export default new Vuex.Store({
         url: "../assets/profileIcon1.png"
       }]
   },
+  getters:{
+    countNoOfProfiles: state => {
+      return state.profiles.length
+    }
+  },
   mutations: {},
   actions: {},
   modules: {}

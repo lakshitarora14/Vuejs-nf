@@ -19,7 +19,7 @@
   </div>
 </template>
 <script>
-  import axios from "axios";
+  // import axios from "axios";
   export default {
     name: "NavbarMainPage",
     data(){
@@ -29,17 +29,17 @@
     },
 
   }
-  const BaseUrl = "http://www.omdbapi.com/?t=";
-  const ApiKey = "&apikey=dba80b24";
-
-  function buildUrl (searchText) {
-    return BaseUrl + searchText + ApiKey
-  }
-  let url = buildUrl('Avengers')
-  axios.get(url)
-    .then(response => {
-      console.log(response.data)
-    })
+  // const BaseUrl = "http://www.omdbapi.com/?t=";
+  // const ApiKey = "&apikey=dba80b24";
+  //
+  // function buildUrl (searchText) {
+  //   return BaseUrl + searchText + ApiKey
+  // }
+  // let url = buildUrl('Avengers')
+  // axios.get(url)
+  //   .then(response => {
+  //     console.log(response.data)
+  //   })
 
 
 </script>

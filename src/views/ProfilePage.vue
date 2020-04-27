@@ -3,7 +3,9 @@
     <NavbarProfile></NavbarProfile>
     <h1 class="profilePage__heading">{{title}}</h1>
     <Profiles></Profiles>
-    <button type="submit" class="manage">MANAGE PROFILES</button>
+    <router-link to="/MyProfile" class="route">
+      <button type="submit" class="manage">MANAGE PROFILES</button>
+    </router-link>
   </div>
 </template>
 <script>
