@@ -12,7 +12,7 @@
       </router-link>
     <div class="hoverWrapper">
       <input class="nav__search" type="text" placeholder="Titles,people,genres"
-             v-model="message" @keyup.enter="fetchMovieDetails(message),isTrue=true">
+             v-model="message" @keyup.enter="fetchMovieDetails(message),isTrue=true,message.length>3">
       <div id="search-card">
         <h3>Searching for {{message}}</h3>
         <br>
@@ -45,11 +45,11 @@ export default {
     },
     fetchMovieDetails (movie) {
       let url = buildUrl(movie)
+      debugger
       axios.get(url)
         .then(response => {
           this.updateMovieDetailsInStore(response.data)
         })
-
     },
     updateMovieDetailsInStore (data){
       this.movieDetails = data

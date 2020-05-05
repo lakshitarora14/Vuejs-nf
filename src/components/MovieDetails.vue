@@ -1,7 +1,7 @@
 <template>
   <div class = movie-detail>
     <div class="movie-detail__card-left">
-      <img :src="movieDetails.Poster" height="350px" width="250px">
+      <img :src="movieDetails.Poster" height="300px" width="225px">
     </div>
     <div class="movie-detail__card-right">
       <div class="movie-detail__title">
