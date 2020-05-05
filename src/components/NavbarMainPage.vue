@@ -61,7 +61,7 @@ export default {
   }
 }
 
-const BaseUrl = "http://www.omdbapi.com/?t=";
+const BaseUrl = "https://www.omdbapi.com/?t=";
 const ApiKey = "&apikey=dba80b24";
 
 function buildUrl (searchText) {
